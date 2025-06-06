@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestara — пиксельный roguelike, где каждый бой — новый путь</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <div class="logo" onclick="navigateTo('home')">
+          <i class="fa-solid fa-star"></i>
+          <span>Celestara</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+          <button class="nav-link active" onclick="navigateTo('home')">Главная</button>
+          <button class="nav-link" onclick="navigateTo('about')">Об игре</button>
+          <button class="nav-link" onclick="navigateTo('gameplay')">Механики</button>
+          <button class="nav-link" onclick="navigateTo('blog')">Блог</button>
+          <button class="nav-link" onclick="navigateTo('download')">Скачать</button>
+          <button class="nav-link" onclick="navigateTo('contact')">Контакты</button>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Container -->
+  <div id="pageContainer">
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content fade-in">
+            <h1 class="hero-title">Celestara</h1>
+            <p class="hero-subtitle">Пиксельный roguelike, где каждый бой — новый путь</p>
+            <p class="hero-description">
+              Исследуйте парящие острова, сражайтесь с умными врагами и прокладывайте свой путь через процедурно
+              генерируемые уровни
+            </p>
+
+            <div class="hero-buttons">
+              <button class="btn btn-primary" onclick="navigateTo('download')">
+                <i class="fa-solid fa-play"></i>
+                Играть сейчас
+              </button>
+              <button class="btn btn-outline" onclick="navigateTo('blog')">
+                <i class="fa-solid fa-book-open"></i>
+                Читать блог
+              </button>
+              <button class="btn btn-outline-secondary" onclick="navigateTo('contact')">
+                <i class="fa-solid fa-envelope"></i>
+                Присоединиться к тесту
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Image/Video Placeholder -->
+          <div class="hero-image-container">
+            <div class="hero-image-wrapper">
+              <img src="https://placehold.co/800x400/1a1a2e/FFFFFF?text=Celestara+Gameplay" alt="Celestara Gameplay" class="hero-image">
+              <p class="hero-image-caption">Геймплей трейлер - острова, мосты и динамичные сражения</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Features -->
+      <section class="quick-features section-dark">
+        <div class="container">
+          <h2 class="section-title">Почему Celestara?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-solid fa-map"></i>
+              </div>
+              <h4 class="feature-title">Процедурная генерация</h4>
+              <p class="feature-description">Каждый уровень уникален</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-solid fa-sword"></i>
+              </div>
+              <h4 class="feature-title">Разнообразное оружие</h4>
+              <p class="feature-description">Ближний бой, дальние атаки, магия</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-solid fa-battery-half"></i>
+              </div>
+              <h4 class="feature-title">Система выносливости</h4>
+              <p class="feature-description">Тактическое планирование</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <h4 class="feature-title">Умный ИИ врагов</h4>
+              <p class="feature-description">Адаптивное поведение</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Latest Blog Posts -->
+      <section class="latest-posts">
+        <div class="container">
+          <h2 class="section-title">Последние новости</h2>
+          <div id="latestPostsContainer" class="latest-posts-grid">
+            <!-- Latest posts will be loaded here -->
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary" onclick="navigateTo('blog')">
+              <i class="fa-solid fa-book-open"></i>
+              Все посты
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap Section -->
+      <section class="roadmap-home">
+        <div class="container">
+          <h2 class="section-title">Планы развития</h2>
+          <div class="roadmap-timeline">
+            <div class="roadmap-grid">
+  <div class="roadmap-item active">
+    <div class="roadmap-header">
+      <div class="roadmap-info">
+        <h4 class="roadmap-title">Демо-версия</h4>
+        <p class="roadmap-phase">Март - Июнь 2025</p>
+      </div>
+      <span class="roadmap-badge active">В разработке</span>
+    </div>
+    <div class="roadmap-content">
+      <p class="roadmap-description">Первая играбельная версия с базовым функционалом</p>
+      <div class="roadmap-features">
+        <div class="roadmap-feature">
+          <span class="feature-dot active"></span>
+          <span>3 типа врагов с базовым ИИ</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot active"></span>
+          <span>5 видов оружия (мечи, луки, посохи)</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot active"></span>
+          <span>10 процедурно генерируемых уровней</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot active"></span>
+          <span>Система стамины и здоровья</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot active"></span>
+          <span>Базовая система сохранений</span>
+        </div>
+      </div>
+      <div class="roadmap-platforms">
+        <strong>Платформы:</strong> Android
+      </div>
+    </div>
+  </div>
+  
+  <div class="roadmap-item upcoming">
+    <div class="roadmap-header">
+      <div class="roadmap-info">
+        <h4 class="roadmap-title">Закрытое тестирование</h4>
+        <p class="roadmap-phase">Июль - Декабрь 2025</p>
+      </div>
+      <span class="roadmap-badge upcoming">Скоро</span>
+    </div>
+    <div class="roadmap-content">
+      <p class="roadmap-description">Расширенная версия для тестирования сообществом</p>
+      <div class="roadmap-features">
+        <div class="roadmap-feature">
+          <span class="feature-dot upcoming"></span>
+          <span>6 новых типов врагов с продвинутым ИИ</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot upcoming"></span>
+          <span>15 видов оружия + магические артефакты</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot upcoming"></span>
+          <span>25 уровней с боссами</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot upcoming"></span>
+          <span>Система достижений и статистики</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot upcoming"></span>
+          <span>Кооперативный режим для 2 игроков</span>
+        </div>
+      </div>
+      <div class="roadmap-platforms">
+        <strong>Доступ:</strong> По заявкам через Discord, 1000 тестеров
+      </div>
+    </div>
+  </div>
+  
+  <div class="roadmap-item planned">
+    <div class="roadmap-header">
+      <div class="roadmap-info">
+        <h4 class="roadmap-title">Ранний доступ</h4>
+        <p class="roadmap-phase">Февраль - Март 2026</p>
+      </div>
+      <span class="roadmap-badge planned">Запланировано</span>
+    </div>
+    <div class="roadmap-content">
+      <p class="roadmap-description">Steam релиз с расширенным контентом и инструментами</p>
+      <div class="roadmap-features">
+        <div class="roadmap-feature">
+          <span class="feature-dot planned"></span>
+          <span>Полноценный редактор уровней</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot planned"></span>
+          <span>Steam Workshop интеграция</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot planned"></span>
+          <span>50+ уровней в кампании</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot planned"></span>
+          <span>Кооператив до 4 игроков</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot planned"></span>
+          <span>Система прокачки персонажа</span>
+        </div>
+      </div>
+      <div class="roadmap-platforms">
+        <strong>Платформы:</strong> Steam (PC), Windows, улучшенная Android версия
+      </div>
+    </div>
+  </div>
+  
+  <div class="roadmap-item future">
+    <div class="roadmap-header">
+      <div class="roadmap-info">
+        <h4 class="roadmap-title">Полный релиз</h4>
+        <p class="roadmap-phase">Апрель - Октябрь 2026</p>
+      </div>
+      <span class="roadmap-badge future">Будущее</span>
+    </div>
+    <div class="roadmap-content">
+      <p class="roadmap-description">Финальная версия со всем контентом и функциями</p>
+      <div class="roadmap-features">
+        <div class="roadmap-feature">
+          <span class="feature-dot future"></span>
+          <span>100+ уровней с уникальными биомами</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot future"></span>
+          <span>PvP арена режим</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot future"></span>
+          <span>Сезонные события и контент</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot future"></span>
+          <span>Полная локализация на 8 языков</span>
+        </div>
+        <div class="roadmap-feature">
+          <span class="feature-dot future"></span>
+          <span>Консольные версии (PlayStation, Xbox, Switch)</span>
+        </div>
+      </div>
+      <div class="roadmap-platforms">
+        <strong>Платформы:</strong> Все основные платформы + консоли
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page">
+      <section class="about section-dark">
+        <div class="container">
+          <h2 class="section-title">Об игре</h2>
+
+          <div class="about-grid">
+            <div class="about-text">
+              <h3 class="about-subtitle">Жанр и вдохновение</h3>
+              <p class="about-description">
+                Celestara вдохновлена лучшими представителями жанра: Soul Knight, Nuclear Throne, Enter the Gungeon. Мы
+                взяли динамичный геймплей и добавили уникальную механику парящих островов.
+              </p>
+
+              <div class="badge-container">
+                <span class="badge badge-purple">Roguelike</span>
+                <span class="badge badge-pink">Action</span>
+                <span class="badge badge-blue">Pixel Art</span>
+                <span class="badge badge-green">Indie</span>
+              </div>
+            </div>
+
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-map"></i>
+                </div>
+                <h4 class="feature-title">Процедурная генерация</h4>
+                <p class="feature-description">Каждый уровень уникален - острова, мосты и враги генерируются случайно</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-sword"></i>
+                </div>
+                <h4 class="feature-title">Разнообразное оружие</h4>
+                <p class="feature-description">Ближний бой, дальние атаки и магия - выбирайте свой стиль сражения</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-battery-half"></i>
+                </div>
+                <h4 class="feature-title">Система выносливости</h4>
+                <p class="feature-description">Управляйте стаминой - каждое действие требует энергии</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <h4 class="feature-title">Умный ИИ врагов</h4>
+                <p class="feature-description">Враги адаптируются к вашей тактике и работают в команде</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery -->
+          <div class="gallery-section">
+            <h3 class="gallery-title">Галерея</h3>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="https://placehold.co/300x200/1a1a2e/FFFFFF?text=Динамичный+бой" alt="Динамичный бой" class="gallery-image">
+                <h4 class="gallery-item-title">Динамичный бой</h4>
+                <p class="gallery-item-description">Система боя с выносливостью</p>
+              </div>
+              <div class="gallery-item">
+                <img src="https://placehold.co/300x200/1a1a2e/FFFFFF?text=Умные+враги" alt="Умные враги" class="gallery-image">
+                <h4 class="gallery-item-title">Умные враги</h4>
+                <p class="gallery-item-description">ИИ адаптируется к вашей тактике</p>
+              </div>
+              <div class="gallery-item">
+                <img src="https://placehold.co/300x200/1a1a2e/FFFFFF?text=Порталы" alt="Порталы" class="gallery-image">
+                <h4 class="gallery-item-title">Порталы</h4>
+                <p class="gallery-item-description">Переходы между уровнями</p>
+              </div>
+              <div class="gallery-item">
+                <img src="https://placehold.co/300x200/1a1a2e/FFFFFF?text=Генерация+островов" alt="Генерация островов" class="gallery-image">
+                <h4 class="gallery-item-title">Генерация островов</h4>
+                <p class="gallery-item-description">Каждый уровень уникален</p>
+              </div>
+              <div class="gallery-item">
+                <img src="https://placehold.co/300x200/1a1a2e/FFFFFF?text=Разнообразное+оружие" alt="Разнообразное оружие" class="gallery-image">
+                <h4 class="gallery-item-title">Разнообразное оружие</h4>
+                <p class="gallery-item-description">Ближний бой, дальние атаки, магия</p>
+              </div>
+              <div class="gallery-item">
+                <img src="https://placehold.co/300x200/1a1a2e/FFFFFF?text=Интерфейс" alt="Интерфейс" class="gallery-image">
+                <h4 class="gallery-item-title">Интерфейс</h4>
+                <p class="gallery-item-description">Минималистичный UI</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Section -->
+          <div class="team-section">
+            <h3 class="team-title">Команда разработчиков</h3>
+            <div class="team-grid">
+              <div class="team-member">
+                <div class="team-avatar">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+                <h4 class="team-name">nevermindk1d</h4>
+                <p class="team-role">Геймдизайнер и программист</p>
+                <p class="team-description">5 лет опыта в разработке. Создатель Celestara.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="faq-section">
+            <h3 class="faq-title">Часто задаваемые вопросы</h3>
+            <div class="faq-list">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <h4>Когда выйдет полная версия игры?</h4>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                  <p>Мы планируем выпустить полную версию в конце 2025 года. Сначала будет демо, затем ранний доступ, и только потом финальный релиз.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <h4>Будет ли игра поддерживать мультиплеер?</h4>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                  <p>Да! Мы планируем добавить кооперативный режим для 2-4 игроков в полной версии. Также рассматриваем возможность PvP-режимов.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <h4>На каких языках будет доступна игра?</h4>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                  <p>На старте игра будет доступна на русском и английском языках. В планах добавить поддержку китайского, японского и основных европейских языков.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <h4>Можно ли будет создавать собственные уровни?</h4>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                  <p>Абсолютно! Мы разрабатываем полноценный редактор уровней с поддержкой Steam Workshop. Игроки смогут создавать и делиться своими островами.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <h4>Будут ли микротранзакции?</h4>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                  <p>Нет! Celestara - это премиум-игра без микротранзакций. Вы покупаете игру один раз и получаете весь контент.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Gameplay Page -->
+    <div id="gameplay-page" class="page">
+      <section class="gameplay">
+        <div class="container">
+          <h2 class="section-title">Механики игры</h2>
+
+          <div class="tabs-container">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="levels">Уровни</button>
+              <button class="tab-btn" data-tab="combat">Бой</button>
+              <button class="tab-btn" data-tab="enemies">Враги</button>
+              <button class="tab-btn" data-tab="player">Игрок</button>
+              <button class="tab-btn" data-tab="progression">Прогресс</button>
+            </div>
+
+            <div class="tab-content active" id="levels">
+              <div class="tab-card">
+                <div class="tab-card-header">
+                  <h3 class="tab-card-title">Генерация уровней</h3>
+                </div>
+                <div class="tab-card-body">
+                  <div class="tab-grid">
+                    <div class="tab-info">
+                      <h4 class="tab-subtitle">Острова и мосты</h4>
+                      <ul class="tab-list">
+                        <li>• Случайно сгенерированные острова</li>
+                        <li>• Тайлы 64x64, комнаты 5x5</li>
+                        <li>• Мосты 3x1 / 1x3 между островами</li>
+                        <li>• Блокировка мостов во время боя</li>
+                      </ul>
+                    </div>
+                    <div class="tab-image">
+                      <img src="https://placehold.co/250x150/1a1a2e/FFFFFF?text=Level+Generation" alt="Level Generation">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="combat">
+              <div class="tab-card">
+                <div class="tab-card-header">
+                  <h3 class="tab-card-title">Система боя</h3>
+                </div>
+                <div class="tab-card-body">
+                  <div class="tab-grid-3">
+                    <div class="tab-info">
+                      <h4 class="tab-subtitle">
+                        <i class="fa-solid fa-sword"></i>
+                        Оружие
+                      </h4>
+                      <ul class="tab-list">
+                        <li>• Ближний бой</li>
+                        <li>• Дальние атаки</li>
+                        <li>• Магическое оружие</li>
+                      </ul>
+                    </div>
+                    <div class="tab-info">
+                      <h4 class="tab-subtitle">
+                        <i class="fa-solid fa-battery-half"></i>
+                        Стамина
+                      </h4>
+                      <ul class="tab-list">
+                        <li>• Расход на действия</li>
+                        <li>• Автовосстановление</li>
+                        <li>• Тактическое планирование</li>
+                      </ul>
+                    </div>
+                    <div class="tab-info">
+                      <h4 class="tab-subtitle">
+                        <i class="fa-solid fa-crosshairs"></i>
+                        Прицеливание
+                      </h4>
+                      <ul class="tab-list">
+                        <li>• Направление атаки</li>
+                        <li>• Точность попадания</li>
+                        <li>• Критические удары</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="enemies">
+              <div class="tab-card">
+                <div class="tab-card-header">
+                  <h3 class="tab-card-title">Типы врагов</h3>
+                </div>
+                <div class="tab-card-body">
+                  <div class="tab-grid-3">
+                    <div class="enemy-type">
+                      <div class="enemy-icon red">
+                        <i class="fa-solid fa-bolt"></i>
+                      </div>
+                      <h4 class="enemy-title">Обычные</h4>
+                      <p class="enemy-description">Ближний бой, базовая тактика</p>
+                    </div>
+                    <div class="enemy-type">
+                      <div class="enemy-icon blue">
+                        <i class="fa-solid fa-crosshairs"></i>
+                      </div>
+                      <h4 class="enemy-title">Дальнего боя</h4>
+                      <p class="enemy-description">Стреляют с расстояния</p>
+                    </div>
+                    <div class="enemy-type">
+                      <div class="enemy-icon orange">
+                        <i class="fa-solid fa-bolt"></i>
+                      </div>
+                      <h4 class="enemy-title">Камикадзе</h4>
+                      <p class="enemy-description">Взрываются при контакте</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="player">
+              <div class="tab-card">
+                <div class="tab-card-header">
+                  <h3 class="tab-card-title">Игровой персонаж</h3>
+                </div>
+                <div class="tab-card-body">
+                  <div class="tab-grid">
+                    <div class="tab-info">
+                      <h4 class="tab-subtitle">Управление и физика</h4>
+                      <ul class="tab-list">
+                        <li>• WASD для движения</li>
+                        <li>• Мышь для прицеливания</li>
+                        <li>• Плавная анимация</li>
+                        <li>• Реалистичная физика</li>
+                      </ul>
+                    </div>
+                    <div class="tab-info">
+                      <h4 class="tab-subtitle">Смерть и эффекты</h4>
+                      <ul class="tab-list">
+                        <li>• Перманентная смерть</li>
+                        <li>• Тряска камеры при уроне</li>
+                        <li>• Экран смерти с статистикой</li>
+                        <li>• Возможность быстрого рестарта</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="progression">
+              <div class="tab-card">
+                <div class="tab-card-header">
+                  <h3 class="tab-card-title">Система сохранения</h3>
+                </div>
+                <div class="tab-card-body">
+                  <div class="progression-info">
+                    <h4 class="tab-subtitle">
+                      <i class="fa-solid fa-heart"></i>
+                      Перенос между уровнями
+                    </h4>
+                    <p class="progression-description">
+                      Ваше здоровье, стамина и оружие сохраняются при переходе на новый уровень, но смерть означает
+                      полный рестарт.
+                    </p>
+                    <div class="note">
+                      <p><strong>Важно:</strong> В будущих версиях планируется система прокачки и постоянных улучшений.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Blog Page -->
+    <div id="blog-page" class="page">
+      <section class="blog">
+        <div class="container">
+          <h2 class="section-title">Блог разработчиков</h2>
+          
+          <!-- Blog Filters -->
+          <div class="blog-filters">
+            <button class="filter-btn active" data-filter="all">Все</button>
+            <button class="filter-btn" data-filter="Геймплей">Геймплей</button>
+            <button class="filter-btn" data-filter="ИИ">ИИ</button>
+            <button class="filter-btn" data-filter="Дизайн">Дизайн</button>
+            <button class="filter-btn" data-filter="Технологии">Технологии</button>
+          </div>
+
+          <!-- Search -->
+          <div class="blog-search">
+            <input type="text" id="blogSearch" class="form-control" placeholder="Поиск по постам...">
+            <i class="fa-solid fa-search"></i>
+          </div>
+
+          <div id="blogPostsContainer" class="blog-posts-grid">
+            <!-- Blog posts will be loaded here -->
+          </div>
+
+          <!-- Pagination -->
+          <div id="blogPagination" class="pagination">
+            <!-- Pagination will be generated here -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Download Page -->
+    <div id="download-page" class="page">
+      <section class="download">
+        <div class="container">
+          <h2 class="section-title">Скачать Celestara</h2>
+
+          <div class="download-container">
+            <div class="download-card">
+              <div class="download-demo">
+                <div class="download-demo-icon">
+                  <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <h3 class="download-demo-title">Демо-версия</h3>
+                <p class="download-demo-description">
+                  Попробуйте Celestara прямо сейчас! Демо включает первые уровни с базовыми механиками.
+                </p>
+
+                <div class="download-buttons">
+                  <button class="btn btn-primary" id="downloadPcBtn">
+                    <i class="fa-solid fa-download"></i>
+                    Скачать для ПК
+                  </button>
+                  <button class="btn btn-outline" id="downloadMobileBtn">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    Скачать для телефона
+                  </button>
+                </div>
+              </div>
+
+              <div class="download-info-grid">
+                <div class="download-info">
+                  <h4 class="download-info-title">Управление</h4>
+                  <ul class="download-info-list">
+                    <li>WASD - движение</li>
+                    <li>Мышь - прицеливание</li>
+                    <li>ЛКМ - атака</li>
+                    <li>Пробел - рывок</li>
+                  </ul>
+                </div>
+                <div class="download-info">
+                  <h4 class="download-info-title">Цель</h4>
+                  <ul class="download-info-list">
+                    <li>Очистить все острова</li>
+                    <li>Найти портал</li>
+                    <li>Выжить как можно дольше</li>
+                    <li>Собрать лучшее оружие</li>
+                  </ul>
+                </div>
+                <div class="download-info">
+                  <h4 class="download-info-title">Советы</h4>
+                  <ul class="download-info-list">
+                    <li>Следите за стаминой</li>
+                    <li>Используйте мосты тактически</li>
+                    <li>Изучайте поведение врагов</li>
+                    <li>Экспериментируйте с оружием</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="download-details-grid">
+              <div class="download-details-card blue">
+                <div class="download-details-header">
+                  <h3 class="download-details-title">Системные требования</h3>
+                </div>
+                <div class="download-details-content">
+                  <div class="system-requirements">
+                    <div><strong>ОС:</strong> Windows 10/11, macOS 10.15+, Linux</div>
+                    <div><strong>Процессор:</strong> Intel i3 / AMD Ryzen 3</div>
+                    <div><strong>Память:</strong> 4 GB RAM</div>
+                    <div><strong>Видеокарта:</strong> Интегрированная</div>
+                    <div><strong>Место:</strong> 500 MB</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="download-details-card green">
+                <div class="download-details-header">
+                  <h3 class="download-details-title">Доступные платформы</h3>
+                </div>
+                <div class="download-details-content">
+                  <button class="btn btn-outline-orange btn-block">
+                    <i class="fa-solid fa-external-link"></i>
+                    Itch.io (ПК)
+                  </button>
+                  <button class="btn btn-outline-blue btn-block">
+                    <i class="fa-solid fa-external-link"></i>
+                    Google Play (Android)
+                  </button>
+                  <button class="btn btn-outline-purple btn-block">
+                    <i class="fa-solid fa-external-link"></i>
+                    App Store (iOS)
+                  </button>
+                  <div class="coming-soon">Steam версия - скоро!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Version History -->
+            <div class="version-history">
+              <h3 class="version-title">История версий</h3>
+              <div class="version-list">
+                <div class="version-item current">
+                  <div class="version-header">
+                    <span class="version-number">v0.3.2</span>
+                    <span class="version-date">15.12.2024</span>
+                    <span class="version-badge current">Текущая</span>
+                  </div>
+                  <div class="version-content">
+                    <h4>Что нового:</h4>
+                    <ul>
+                      <li>Добавлен новый тип врага - Камикадзе</li>
+                      <li>Улучшена система ИИ</li>
+                      <li>Исправлены баги с коллизиями мостов</li>
+                      <li>Оптимизирована производительность на мобильных устройствах</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="version-item">
+                  <div class="version-header">
+                    <span class="version-number">v0.3.1</span>
+                    <span class="version-date">01.12.2024</span>
+                  </div>
+                  <div class="version-content">
+                    <h4>Изменения:</h4>
+                    <ul>
+                      <li>Добавлено магическое оружие</li>
+                      <li>Новые звуковые эффекты</li>
+                      <li>Улучшена генерация уровней</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="version-item">
+                  <div class="version-header">
+                    <span class="version-number">v0.3.0</span>
+                    <span class="version-date">15.11.2024</span>
+                  </div>
+                  <div class="version-content">
+                    <h4>Крупное обновление:</h4>
+                    <ul>
+                      <li>Полностью переработанная система боя</li>
+                      <li>Новая система стамины</li>
+                      <li>Добавлены достижения</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Download Statistics -->
+            <div class="download-stats">
+              <h3 class="stats-title">Статистика загрузок</h3>
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <div class="stat-number">12,547</div>
+                  <div class="stat-label">Всего загрузок</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">8,932</div>
+                  <div class="stat-label">Активных игроков</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">4.7/5</div>
+                  <div class="stat-label">Средняя оценка</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">156</div>
+                  <div class="stat-label">Отзывов</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+      <section class="contact">
+        <div class="container">
+          <h2 class="section-title">Контакты и сообщество</h2>
+
+          <div class="contact-grid">
+            <!-- Social Links -->
+            <div class="contact-card">
+              <div class="contact-card-header">
+                <h3 class="contact-card-title">Присоединяйтесь к нам</h3>
+                <p class="contact-card-description">
+                  Следите за новостями и общайтесь с разработчиками
+                </p>
+              </div>
+              <div class="contact-card-content">
+                <button class="btn btn-outline-purple btn-block">
+                  <i class="fa-solid fa-comment"></i>
+                  Discord сервер
+                </button>
+                <button class="btn btn-outline-blue btn-block">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  Telegram канал
+                </button>
+                <button class="btn btn-outline-twitter btn-block">
+                  <i class="fa-brands fa-twitter"></i>
+                  Twitter
+                </button>
+                <button class="btn btn-outline-gray btn-block">
+                  <i class="fa-brands fa-github"></i>
+                  GitHub (Open Source)
+                </button>
+              </div>
+            </div>
+
+            <!-- Feedback Form -->
+            <div class="contact-card">
+              <div class="contact-card-header">
+                <h3 class="contact-card-title">Обратная связь</h3>
+                <p class="contact-card-description">
+                  Поделитесь своими идеями или сообщите о багах
+                </p>
+              </div>
+              <div class="contact-card-content">
+                <form class="feedback-form">
+                  <div class="form-group">
+                    <label for="feedback-type">Тип сообщения</label>
+                    <select id="feedback-type" class="form-control">
+                      <option>Отзыв о игре</option>
+                      <option>Сообщение о баге</option>
+                      <option>Предложение фичи</option>
+                      <option>Общий вопрос</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="feedback-email">Email (необязательно)</label>
+                    <input type="email" id="feedback-email" class="form-control" placeholder="your@email.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="feedback-message">Сообщение</label>
+                    <textarea id="feedback-message" class="form-control" rows="4" placeholder="Расскажите нам, что думаете о Celestara..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fa-solid fa-envelope"></i>
+                    Отправить
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="newsletter">
+            <div class="newsletter-card">
+              <h3 class="newsletter-title">Подписка на новости</h3>
+              <p class="newsletter-description">
+                Получайте уведомления о новых версиях, блог постах и важных обновлениях
+              </p>
+              <form class="newsletter-form">
+                <input type="email" class="form-control" placeholder="Ваш email">
+                <button type="submit" class="btn btn-primary">Подписаться</button>
+              </form>
+              <p class="newsletter-note">Никакого спама, только важные новости об игре</p>
+            </div>
+          </div>
+
+          <!-- Roadmap -->
+          
+          <!-- Roadmap Section removed from here -->
+
+          
+          <!-- Roadmap Section removed from here -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Individual Blog Post Page -->
+    <div id="post-page" class="page">
+      <section class="post">
+        <div class="container">
+          <div id="postContent">
+            <!-- Individual post content will be loaded here -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Enhanced Admin Panel -->
+  <section class="admin-panel" id="adminPanel" style="display: none;">
+    <div class="container">
+      <h2 class="section-title">Админ панель</h2>
+      
+      <div class="admin-container">
+        <!-- Admin Navigation -->
+        <div class="admin-nav">
+          <button class="admin-nav-btn active" data-admin-tab="posts">
+            <i class="fa-solid fa-newspaper"></i>
+            Посты
+          </button>
+          <button class="admin-nav-btn" data-admin-tab="pages">
+            <i class="fa-solid fa-file"></i>
+            Страницы
+          </button>
+          <button class="admin-nav-btn" data-admin-tab="settings">
+            <i class="fa-solid fa-cog"></i>
+            Настройки
+          </button>
+          <button class="admin-nav-btn" data-admin-tab="analytics">
+            <i class="fa-solid fa-chart-bar"></i>
+            Аналитика
+          </button>
+          <button class="btn btn-outline" id="closeAdminBtn">
+            <i class="fa-solid fa-times"></i>
+            Закрыть
+          </button>
+        </div>
+
+        <!-- Posts Management -->
+        <div class="admin-content active" id="admin-posts">
+          <div class="admin-card">
+            <div class="admin-header">
+              <h3 class="admin-title">Управление постами</h3>
+            </div>
+            
+            <form class="admin-form" id="addPostForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="post-title">Заголовок поста</label>
+                  <input type="text" id="post-title" class="form-control" placeholder="Введите заголовок поста" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="post-readtime">Время чтения (мин)</label>
+                  <input type="number" id="post-readtime" class="form-control" placeholder="5" min="1" max="60" required>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="post-excerpt">Краткое описание</label>
+                <textarea id="post-excerpt" class="form-control" rows="3" placeholder="Краткое описание поста для превью" required></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="post-tags">Теги (через запятую)</label>
+                <input type="text" id="post-tags" class="form-control" placeholder="Геймплей, ИИ, Программирование">
+              </div>
+              
+              <div class="form-group">
+                <label for="post-content">Полный текст поста</label>
+                <textarea id="post-content" class="form-control" rows="8" placeholder="Полный текст поста в формате Markdown" required></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="post-image">Изображение поста (URL)</label>
+                <input type="url" id="post-image" class="form-control" placeholder="https://example.com/image.jpg">
+              </div>
+
+              <div class="form-group">
+                <label for="post-video">Видео поста (URL)</label>
+                <input type="url" id="post-video" class="form-control" placeholder="https://youtube.com/watch?v=... или https://example.com/video.mp4">
+              </div>
+              
+              <div class="form-group">
+                <label for="post-featured">
+                  <input type="checkbox" id="post-featured"> Рекомендуемый пост
+                </label>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Добавить пост
+              </button>
+            </form>
+
+            <!-- Posts List -->
+            <div class="admin-posts-list">
+              <h4>Существующие посты</h4>
+              <div id="adminPostsList">
+                <!-- Posts list will be loaded here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pages Management -->
+        <div class="admin-content" id="admin-pages">
+          <div class="admin-card">
+            <div class="admin-header">
+              <h3 class="admin-title">Управление страницами</h3>
+            </div>
+            
+            <div class="pages-stats">
+              <div class="stat-card">
+                <h4>Всего страниц</h4>
+                <span id="totalPages">6</span>
+              </div>
+              <div class="stat-card">
+                <h4>Постов блога</h4>
+                <span id="totalBlogPosts">0</span>
+              </div>
+              <div class="stat-card">
+                <h4>Активных страниц</h4>
+                <span id="activePages">6</span>
+              </div>
+            </div>
+
+            <div class="pages-list">
+              <h4>Список страниц</h4>
+              <div class="page-item">
+                <span class="page-name">Главная</span>
+                <span class="page-status active">Активна</span>
+                <button class="btn btn-sm btn-outline">Редактировать</button>
+              </div>
+              <div class="page-item">
+                <span class="page-name">Об игре</span>
+                <span class="page-status active">Активна</span>
+                <button class="btn btn-sm btn-outline">Редактировать</button>
+              </div>
+              <div class="page-item">
+                <span class="page-name">Механики</span>
+                <span class="page-status active">Активна</span>
+                <button class="btn btn-sm btn-outline">Редактировать</button>
+              </div>
+              <div class="page-item">
+                <span class="page-name">Блог</span>
+                <span class="page-status active">Активна</span>
+                <button class="btn btn-sm btn-outline">Редактировать</button>
+              </div>
+              <div class="page-item">
+                <span class="page-name">Скачать</span>
+                <span class="page-status active">Активна</span>
+                <button class="btn btn-sm btn-outline">Редактировать</button>
+              </div>
+              <div class="page-item">
+                <span class="page-name">Контакты</span>
+                <span class="page-status active">Активна</span>
+                <button class="btn btn-sm btn-outline">Редактировать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="admin-content" id="admin-settings">
+          <div class="admin-card">
+            <div class="admin-header">
+              <h3 class="admin-title">Настройки сайта</h3>
+            </div>
+            
+            <form class="admin-form" id="settingsForm">
+              <div class="form-group">
+                <label for="site-title">Название сайта</label>
+                <input type="text" id="site-title" class="form-control" value="Celestara">
+              </div>
+              
+              <div class="form-group">
+                <label for="site-description">Описание сайта</label>
+                <textarea id="site-description" class="form-control" rows="3">Пиксельный roguelike, где каждый бой — новый путь</textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="posts-per-page">Постов на странице</label>
+                <input type="number" id="posts-per-page" class="form-control" value="6" min="1" max="20">
+              </div>
+              
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" id="enable-comments" checked> Включить комментарии
+                </label>
+              </div>
+              
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" id="enable-analytics" checked> Включить аналитику
+                </label>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-save"></i>
+                Сохранить настройки
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="admin-content" id="admin-analytics">
+          <div class="admin-card">
+            <div class="admin-header">
+              <h3 class="admin-title">Аналитика</h3>
+            </div>
+            
+            <div class="analytics-stats">
+              <div class="stat-card">
+                <h4>Просмотры страниц</h4>
+                <span id="pageViews">1,234</span>
+                <small>+12% за неделю</small>
+              </div>
+              <div class="stat-card">
+                <h4>Уникальные посетители</h4>
+                <span id="uniqueVisitors">456</span>
+                <small>+8% за неделю</small>
+              </div>
+              <div class="stat-card">
+                <h4>Время на сайте</h4>
+                <span id="avgTime">3:42</span>
+                <small>+15% за неделю</small>
+              </div>
+              <div class="stat-card">
+                <h4>Популярная страница</h4>
+                <span id="topPage">Главная</span>
+                <small>45% трафика</small>
+              </div>
+            </div>
+
+            <div class="analytics-chart">
+              <h4>Посещения за последние 7 дней</h4>
+              <div class="chart-placeholder">
+                <div class="chart-bar" style="height: 60%"></div>
+                <div class="chart-bar" style="height: 80%"></div>
+                <div class="chart-bar" style="height: 45%"></div>
+                <div class="chart-bar" style="height: 90%"></div>
+                <div class="chart-bar" style="height: 70%"></div>
+                <div class="chart-bar" style="height: 85%"></div>
+                <div class="chart-bar" style="height: 95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Access Button -->
+  <button class="admin-access-btn" id="adminAccessBtn" title="Админ панель">
+    <i class="fa-solid fa-cog"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo" onclick="navigateTo('home')">
+          <i class="fa-solid fa-star"></i>
+          <span>Celestara</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="#" class="footer-link">Пресс-кит</a>
+          <a href="#" class="footer-link">Конфиденциальность</a>
+          <a href="#" class="footer-link" onclick="navigateTo('contact')">Контакты</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Celestara Game. Сделано с ❤️ инди-разработчиками.</p>
+        <p class="footer-note">Celestara находится в активной разработке. Все материалы могут изменяться.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
